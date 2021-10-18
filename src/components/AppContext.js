@@ -8,24 +8,28 @@ function AppProvider({children}) {
 
     const [contacts, setContacts] = useState([]);
     const [isContact, setIsContact] = useState([]);
-
+    
     function addContact(profileObj){
-        console.log(profileObj)
-        if (!contacts.includes(profileObj.firtName)) {
+        if (!contacts.includes(profileObj)) {
+            console.log(`does not exist`)
             setContacts(contacts.concat(profileObj));
-            setIsContact(isContact.concat(profileObj.firstName));
-        } 
+            setIsContact(isContact.concat(profileObj.id));
+        }
+        let index = contacts.indexOf(profileObj) 
+        console.log(`exists at index: `, index)
     }
 
+
     function removeContact(profileObj){
-        console.log(profileObj.firstName)
-        console.log(contacts)
         let index = contacts.indexOf(profileObj);
+        console.log(`exists at index: `, index)
         let temp = [...contacts.slice(0, index), ...contacts.slice(index + 1)];
         setContacts(temp);
-        let index2 = isContact.indexOf(profileObj.firstName);
+        let index2 = isContact.indexOf(profileObj.id);
         let temp2 = [...isContact.slice(0, index2), ...isContact.slice(index2 + 1)];
         setIsContact(temp2);
+        let index3 = contacts.indexOf(profileObj);
+        console.log(`exists at index: `, index3)
     }
 
     const userObj =     {
@@ -53,24 +57,28 @@ function AppProvider({children}) {
         ],
         userProfiles: [
             {
+                id: 1,
                 firstName: "Willie",
                 lastName: "Dustice",
                 birthday: "01/01/1978 00:00:00",
                 profileImage: "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture-For-Youtube.jpg"
             },
             {
+                id: 2,
                 firstName: "Coolio",
                 lastName: "Cool-Jay",
                 birthday: "11/16/1986 00:00:00",
                 profileImage: "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Picture-HD.jpg"
             },
             {
+                id: 3,
                 firstName: "Scoobie",
                 lastName: "Doobie",
                 birthday: "09/21/1945 00:00:00",
                 profileImage: "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Profile-Picture.jpg"
             },
             {
+                id: 4,
                 firstName: "Spellbee",
                 lastName: "Spellman",
                 birthday: "04/04/1994 00:00:00",
@@ -98,7 +106,7 @@ function AppProvider({children}) {
         isContact, 
         setIsContact,
         addContact, 
-        removeContact,
+        removeContact
     };
 
     return (

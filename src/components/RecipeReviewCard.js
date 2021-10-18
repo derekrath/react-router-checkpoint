@@ -11,6 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState, useContext } from "react";
@@ -27,7 +28,7 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-    export default function RecipeReviewCard(profile) {
+export default function RecipeReviewCard(profile) {
 
         const [expanded, setExpanded] = useState(false);
 
@@ -48,7 +49,7 @@ const ExpandMore = styled((props) => {
     let profileObj = profile.profile;
 
     function handleChange(){
-        if (contacts.some(e => e.firstName === profileObj.firstName)) {
+        if (contacts.some(e => e.id === profileObj.id)) {
             removeContact(profileObj);
         } else {
             addContact(profileObj);
@@ -87,7 +88,7 @@ const ExpandMore = styled((props) => {
             <IconButton
                 onClick={() => handleChange()}
                 aria-label="add to contacts">
-                <FavoriteIcon style={{ color: ( isContact.includes(profileObj.firstName) ) ?"pink" : "lightgray" }} />          
+                <AddBoxIcon style={{ color: ( isContact.includes(profileObj.id) ) ? "blue" : "lightgray" }} />          
             </IconButton>
             <ExpandMore
                 expand={expanded}

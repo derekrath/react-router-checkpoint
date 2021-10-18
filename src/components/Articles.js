@@ -17,9 +17,12 @@ export default function Articles({articlesList}) {
             <Grid container justifyContent="center" spacing={spacing}>
                 {articlesList
             .map((article, value) => (
+                <>
                 <Grid key={value} item>
-                    { `${ article.title }` + `${ article.article }` }
+                    { `${ article.title }  ` + `${ article.article }` }
                 </Grid>
+                <br></br>
+                </>
                 ))}
             </Grid>
             </Grid>
